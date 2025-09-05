@@ -1,3 +1,4 @@
+using Infrastructure.JoystickService;
 using VContainer;
 
 namespace Infrastructure.GameStateMachine.States
@@ -6,18 +7,23 @@ namespace Infrastructure.GameStateMachine.States
     {
         private readonly IGameStateMachine _gameStateMachine;
 
+        private IJoystickService  _joystickService;
+        
         public PrepareState(IGameStateMachine gameStateMachine)
         {
             _gameStateMachine = gameStateMachine;
         }
 
         [Inject]
-        private void Construct()
+        private void Construct(IJoystickService joystickService)
         {
+            _joystickService = joystickService;
         }
 
         void IEnterState.Enter()
         {
+            _joystickService.Init();
+            
             _gameStateMachine.Enter<MenuState, string>(SceneName.MENU);
         }
 

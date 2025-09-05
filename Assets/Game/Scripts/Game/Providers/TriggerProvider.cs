@@ -1,0 +1,22 @@
+﻿using Game.Components;
+using Game.Events;
+using Scellecs.Morpeh;
+using Scellecs.Morpeh.Providers;
+using Unity.IL2CPP.CompilerServices;
+using UnityEngine;
+
+namespace Game.Providers
+{
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+    public sealed class TriggerProvider : MonoProvider<TriggerComponent>
+    {
+        private void OnTriggerEnter(Collider other)
+        {
+            World.Default
+                .GetEvent<TriggerEvent>()
+                .NextFrame(new (Entity, other.GetComponent<EntityProvider>().Entity));
+        }
+    }
+}

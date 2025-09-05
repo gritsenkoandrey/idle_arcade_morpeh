@@ -748,7 +748,7 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
-    Android: MORPEH
+    Android: MORPEH;MORPEH_BURST
     Standalone: MORPEH
   additionalCompilerArguments: {}
   platformArchitecture: {}

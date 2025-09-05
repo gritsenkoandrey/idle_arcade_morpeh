@@ -1,17 +1,13 @@
-using Scellecs.Morpeh;
-using VContainer;
-
 namespace Infrastructure.Scopes.EntryPoints
 {
     public sealed class EntryPointMenuSystem : BaseEntryPointSystem
     {
-        public EntryPointMenuSystem(IObjectResolver objectResolver) : base(objectResolver)
+        protected override void Initialize()
         {
         }
-
-        protected override ISystem[] CreateGameSystems()
+        
+        protected override void Dispose()
         {
-            return null;
         }
     }
 }
