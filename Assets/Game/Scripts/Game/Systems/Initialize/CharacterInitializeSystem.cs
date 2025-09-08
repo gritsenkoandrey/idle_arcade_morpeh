@@ -21,8 +21,8 @@ namespace Game.Systems.Initialize
         {
             _cameraService = cameraService;
         }
-        
-        public World World { get; set;}
+
+        public World World { get; set; }
 
         public void OnAwake() 
         {

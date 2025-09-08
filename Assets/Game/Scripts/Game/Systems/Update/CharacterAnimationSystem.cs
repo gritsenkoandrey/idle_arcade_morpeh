@@ -30,8 +30,8 @@ namespace Game.Systems.Update
             foreach (Entity entity in _filter)
             {
                 ref AnimatorComponent animator = ref _animatorStash.Get(entity);
-                
-                animator.value.SetFloat(Animations.Run, _runStash.Has(entity)? 1f: 0f);
+
+                animator.value.SetFloat(Animations.Run, _runStash.Has(entity) ? 1f : 0f);
             }
         }
         

@@ -22,7 +22,7 @@ namespace Game.Systems.Update
             _joystickService = joystickService;
         }
 
-        public World World { get; set;}
+        public World World { get; set; }
 
         public void OnAwake()
         {

@@ -14,9 +14,10 @@ namespace Game.Providers
     {
         private void OnTriggerEnter(Collider other)
         {
-            World.Default
-                .GetEvent<TriggerEvent>()
-                .NextFrame(new (Entity, other.GetComponent<EntityProvider>().Entity));
+            if (other.TryGetComponent(out EntityProvider targetEntity))
+            {
+                World.Default.GetEvent<TriggerEvent>().NextFrame(new (Entity, targetEntity.Entity));
+            }
         }
     }
 }
