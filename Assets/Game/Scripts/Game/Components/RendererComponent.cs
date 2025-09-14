@@ -1,16 +1,15 @@
-﻿using Game.Providers;
-using Scellecs.Morpeh;
+﻿using Scellecs.Morpeh;
 using Unity.IL2CPP.CompilerServices;
+using UnityEngine;
 
-namespace Game.Tags
+namespace Game.Components
 {
     [System.Serializable]
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-    public struct CollectorTag : IComponent
+    public struct RendererComponent : IComponent
     {
-        public ColliderProvider[] colliders;
-        public RendererProvider[] renderers;
+        public Renderer value;
     }
 }

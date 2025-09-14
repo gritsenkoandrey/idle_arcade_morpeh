@@ -3,9 +3,13 @@ using Game.Markers;
 using Game.Tags;
 using Infrastructure.Utils;
 using Scellecs.Morpeh;
+using Unity.IL2CPP.CompilerServices;
 
 namespace Game.Systems.Update
 {
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
     public sealed class CharacterAnimationSystem : ISystem
     {
         private Filter _filter;

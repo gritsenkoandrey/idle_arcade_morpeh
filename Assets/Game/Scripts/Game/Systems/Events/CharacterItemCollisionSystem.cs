@@ -7,11 +7,15 @@ using LitMotion;
 using LitMotion.Extensions;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Collections;
+using Unity.IL2CPP.CompilerServices;
 using UnityEngine;
 
 namespace Game.Systems.Events
 {
-    public sealed class CharacterCollisionSystem : IInitializer
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+    public sealed class CharacterItemCollisionSystem : IInitializer
     {
         private Stash<ItemTag> _itemStash;
         private Stash<CharacterTag> _characterStash;
@@ -45,7 +49,7 @@ namespace Game.Systems.Events
             {
                 if (_collectedStash.Has(trigger.target))
                 {
-                    return;
+                    continue;
                 }
                 
                 if (_characterStash.Has(trigger.source) && _itemStash.Has(trigger.target))
@@ -54,7 +58,7 @@ namespace Game.Systems.Events
                     ref TransformComponent transform = ref _transformStash.Get(trigger.target);
 
                     transform.value.gameObject.layer = Layers.Default;
-                    transform.value.SetParent(backpack.parent);
+                    transform.SetParent(backpack.parent);
                     
                     Vector3 to = new (0f, _collectedStash.Length * transform.value.localScale.y, 0f);
                     
@@ -66,7 +70,8 @@ namespace Game.Systems.Events
                             .BindToLocalPosition(transform.value))
                         .Join(LMotion.Create(transform.value.eulerAngles, Vector3.zero, 0.25f)
                             .BindToLocalEulerAngles(transform.value))
-                        .Run();
+                        .Run()
+                        .AddTo(transform.value, LinkBehavior.CancelOnDestroy);
                 }
             }
         }
