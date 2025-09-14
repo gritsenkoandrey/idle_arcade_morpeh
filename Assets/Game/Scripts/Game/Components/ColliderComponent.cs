@@ -11,7 +11,6 @@ namespace Game.Components
     public struct ColliderComponent : IComponent
     {
         public Collider value;
-
         public void Enable() => value.enabled = true;
         public void Disable() => value.enabled = false;
         public bool IsEnabled => value.enabled;

@@ -12,15 +12,7 @@ namespace Game.Components
     public struct TransformComponent : IComponent, IDisposable
     {
         public Transform value;
-
-        public void SetParent(Transform parent, bool worldPositionStays = true)
-        {
-            value.SetParent(parent, worldPositionStays);
-        }
-        
-        public void Dispose()
-        {
-            UnityEngine.Object.Destroy(value.gameObject);
-        }
+        public void SetParent(Transform parent, bool worldPositionStays = true) => value.SetParent(parent, worldPositionStays);
+        public void Dispose() => UnityEngine.Object.Destroy(value.gameObject);
     }
 }

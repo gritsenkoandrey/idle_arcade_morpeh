@@ -39,6 +39,7 @@ namespace Game.Systems.Update
                 .With<InputComponent>()
                 .With<RunMarker>()
                 .Without<IdleMarker>()
+                .Without<DeathMarker>()
                 .Build();
             
             _characterViewStash = World.GetStash<CharacterControllerComponent>();
