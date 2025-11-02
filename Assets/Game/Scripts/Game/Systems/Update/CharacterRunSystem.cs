@@ -62,14 +62,12 @@ namespace Game.Systems.Update
                 
                 Ray ray = new() { origin = next, direction = Vector3.down };
                 
-                if (Physics.Raycast(ray, RAY_DISTANCE, Layers.GroundShift) == false)
+                if (Physics.Raycast(ray, RAY_DISTANCE, Layers.GroundShift))
                 {
-                    return;
-                }
-                
-                move.y = characterController.value.isGrounded ? 0f : Physics.gravity.y;
+                    move.y = characterController.value.isGrounded ? 0f : Physics.gravity.y;
 
-                characterController.value.Move(move * SPEED * deltaTime);
+                    characterController.value.Move(move * SPEED * deltaTime);
+                }
             }
         }
         

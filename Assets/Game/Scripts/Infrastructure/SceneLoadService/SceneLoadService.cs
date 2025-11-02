@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using Infrastructure.CoroutineService;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Infrastructure.SceneLoadService
 {
+    [UsedImplicitly]
     public sealed class SceneLoadService : ISceneLoadService
     {
         private readonly ICoroutineService _coroutineService;

@@ -1,9 +1,11 @@
 ﻿using Infrastructure.GameStateMachine;
 using Infrastructure.Utils;
+using JetBrains.Annotations;
 using VContainer;
 
 namespace Infrastructure.Factories.StateMachine
 {
+    [UsedImplicitly]
     public sealed class StateMachineFactory : IStateMachineFactory
     {
         private readonly IObjectResolver _objectResolver;

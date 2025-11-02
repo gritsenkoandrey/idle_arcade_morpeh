@@ -3,10 +3,12 @@ using Game.Systems.Initialize;
 using Game.Systems.Update;
 using Infrastructure.CameraService;
 using Infrastructure.JoystickService;
+using JetBrains.Annotations;
 using Scellecs.Morpeh;
 
 namespace Infrastructure.Scopes.EntryPoints
 {
+    [UsedImplicitly]
     public sealed class EntryPointGameSystem : BaseEntryPointSystem
     {
         private readonly ICameraService _cameraService;
@@ -39,6 +41,13 @@ namespace Infrastructure.Scopes.EntryPoints
         
         protected override void Dispose()
         {
+            Filter filter = _world.Filter.Build();
+
+            foreach (Entity entity in filter)
+            {
+                _world.RemoveEntity(entity);
+            }
+            
             _world.RemoveSystemsGroup(_systemsGroup);
         }
     }
